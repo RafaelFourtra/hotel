@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKamarTable extends Migration
+class CreateBookingDetailTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateKamarTable extends Migration
      */
     public function up()
     {
-        Schema::create('kamar', function (Blueprint $table) {
-            $table->increments('id_kamar');
-            $table->string('no_kamar')->unique();
-            $table->string('bed_size')->unique();
-            $table->integer('harga_booking');
+        Schema::create('booking_detail', function (Blueprint $table) {
+            $table->id();
+            $table->integer('id_order');
+            $table->integer('id_kamar');
+            $table->integer('total_harga');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateKamarTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kamar');
+        Schema::dropIfExists('booking_detail');
     }
 }

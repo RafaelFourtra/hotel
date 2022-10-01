@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AdminLTE 3 | Blank Page</title>
 
-  <link rel="stylesheet" href=" {{ asset('assets/plugins/js/jquery.min.js') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
  
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -78,6 +78,30 @@
                   <p>Daftar Kamar</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href=" {{ route('penjualan.index') }}" class="nav-link">
+                  <i class="fas fa-cart-plus nav-icon"></i>
+                  <p>Transaksi</p>
+                </a>
+              </li>
+                <li class="nav-item">
+                <a href=" {{ route('riwayatpenjualan.index') }}" class="nav-link">
+                  <i class="fas fa-cart-plus nav-icon"></i>
+                  <p>Riwayat Transaksi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href=" {{ route('laporan.index') }}" class="nav-link">
+                  <i class="fas fa-file nav-icon"></i>
+                  <p>Laporan Harian</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href=" {{ route('laporan.bulanan') }}" class="nav-link">
+                  <i class="fas fa-file nav-icon"></i>
+                  <p>Laporan Bulanan</p>
+                </a>
+              </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -110,12 +134,12 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="assets/plugins/jquery/jquery.min.js"></script>
+<script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap 4 -->
-<script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE App -->
-<script src="assets/dist/js/adminlte.min.js"></script>
+<script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="assets/dist/js/demo.js"></script>
+<script src="{{ asset('assets/dist/js/demo.js') }}"></script>
 </body>
 </html>

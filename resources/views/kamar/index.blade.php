@@ -33,8 +33,9 @@
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>Nama Kamar</th>
-                    <th>Harga Kamar</th>
+                    <th>Nomor Kamar</th>
+                    <th>Ukuran Kasur</th>
+                    <th>Harga Booking / Hari</th>
                     <th>Aksi</th>
                   </tr>
                   </thead>
@@ -42,7 +43,8 @@
                   @foreach($kamar as $kmr)
                     <tr>
                         <th scope="row">{{$kmr->id_kamar}}</th>
-                        <td>{{$kmr->nama_kamar}}</td>
+                        <td>{{$kmr->no_kamar}}</td>
+                        <td>{{$kmr->bed_size}}</td>
                         <td>{{number_format($kmr->harga_booking)}}</td>
                         <td><a href="/edit/{{ $kmr->id_kamar }}" class="btn btn-warning">Edit</a>
                             <a href="/delete/{{ $kmr->id_kamar }}" class="btn btn-danger">Delete</a></td>
@@ -53,6 +55,10 @@
               </div>
 
             </div>
+          </div>
+        </div>
+        </div>
+
 
     </section>
     <!-- /.content -->
@@ -73,8 +79,12 @@
         @csrf
 
         <div class="form-group">
-            <label for="exampleInputName">Nama Kamar</label>
-            <input type="text" name="nama_kamar" class="form-control" id="exampleInputName">
+            <label for="exampleInputName">Nomor Kamar</label>
+            <input type="text" name="no_kamar" class="form-control" id="exampleInputName">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputName">Ukuran Kasur</label>
+            <input type="text" name="bed_size" class="form-control" id="exampleInputName">
         </div>
         <div class="form-group">
             <label for="exampleInputName">Harga Kamar</label>
@@ -90,7 +100,7 @@
 </div>
 
 @isset($dataskamar)
-<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -103,8 +113,12 @@
       <form action="/update/{{ $dataskamar->id_kamar }}" method="POST">
         @csrf
         <div class="form-group">
-            <label for="exampleInputName">Nama Kamar</label>
-            <input type="text" name="nama_kamar" class="form-control" id="exampleInputName" value="{{ $dataskamar->nama_kamar}}">
+            <label for="exampleInputName">Nomor Kamar</label>
+            <input type="text" name="no_kamar" class="form-control" id="exampleInputName" value="{{ $dataskamar->no_kamar}}">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputName">Ukuran Kasur</label>
+            <input type="text" name="bed_size" class="form-control" id="exampleInputName" value="{{ $dataskamar->bed_size}}">
         </div>
         <div class="form-group">
             <label for="exampleInputName">Harga Kamar</label>
@@ -122,7 +136,7 @@
 
 <script>
 $(document).ready(function(){
-      $("#exampleModal2").modal("show");
+      $("#exampleModal").modal("show");
 });
 </script>
 @include('sweetalert::alert')

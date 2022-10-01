@@ -7,5 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaksi extends Model
 {
-    use HasFactory;
+    protected $table = 'transaksi';
+    protected $primaryKey = 'id';
+    protected $guarded = [];
+
+ 
+    public function bookingdetail()
+    {
+        return $this->hasMany(BookingDetail::class,"id_transaksi");
+    }
 }
