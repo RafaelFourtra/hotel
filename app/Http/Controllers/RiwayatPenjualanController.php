@@ -25,7 +25,6 @@ class RiwayatPenjualanController extends Controller
 
     public function print($id){
         $transaksi = Transaksi::with("bookingdetail")->get();
-        $checking = Transaksi::where("id",$id)->pluck("payment_method")->first();
         $lastIDorder = Transaksi::where("id",$id)->first();
         $order_receipt = BookingDetail::with("kamar")->where('id_transaksi', $id)->get();
         $orderedBy = Transaksi::where('id', $id)->get();

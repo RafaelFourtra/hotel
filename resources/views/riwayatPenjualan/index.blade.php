@@ -137,6 +137,33 @@
 
 
 @endisset
+@isset($lastIDorder)
+<div id="print" style="visibility: hidden;">
+ @include('receipt.receipt')
+ </div>
+<script>
+    
+    var data = '<input type="button" id="printPageButton" class="printPageButton" style="display: block; width:100%; border:none; background-color: #008B8B; color:#fff; padding: 14px 28px; font-size:16px; cursor:pointer; text-align:center" value="Print Receipt"" onClick="window.print()">';
+                data += document.getElementById("print").innerHTML;
+           
+              
+                myReceipt = window.open("", "myWin", "left=150, top=130, width=400, height=400");
+              
+                    myReceipt.screenX = 0;
+                    
+                    myReceipt.screenY = 0;
+                    myReceipt.document.write(data);
+                    myReceipt.document.title = "Print Receipt";
+                  
+                myReceipt.focus();
+                setTimeout(() => {
+                    myReceipt.close();
+                },20000);
+
+          
+    
+</script>
+@endisset
 
 <script>
 $(document).ready(function(){
