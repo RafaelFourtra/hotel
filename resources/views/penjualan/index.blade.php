@@ -28,7 +28,7 @@
             </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-lg-8">
+                        <div class="col-lg-9">
                         <form action="{{ route('penjualan.store') }}" method="post">
                             @csrf
                         <div class="card-body">
@@ -40,6 +40,7 @@
                                         <th scope="col">Size</th>
                                         <th scope="col">Hari</th>
                                         <th scope="col">Harga</th>
+                                        <th scope="col">Diskon</th>
                                         <th scope="col">Total</th>
                                         <th><a href="#" class="btn btn-sm btn-success  rounded-circle" id="add_order"><i class="fa fa-plus-circle"></i></a></th>
 
@@ -52,10 +53,10 @@
                                         <select class="form-control id_kamar" id="id_kamar" name="id_kamar[]">
                                             <option value="">Select Item</option>
                                             @foreach($kamars as $kamar)
-                                                <option data-harga='{{ $kamar->harga_booking }}' data-size='{{ $kamar->bed_size }}' value='{{ $kamar->id_kamar }}'>{{ $kamar->no_kamar }}</option> 
+                                                <option  data-harga='{{ $kamar->harga_booking }}'data-size='{{ $kamar->bed_size }}' value='{{ $kamar->id_kamar }}'>{{ $kamar->no_kamar }}</option> 
                                             @endforeach 
                                         </select>
-                                        </td>
+                                        </td> 
                                         <td>
                                             <input type="text" name="size[]" id="size" class="form-control size">
                                         </td>
@@ -64,6 +65,9 @@
                                         </td>
                                         <td>
                                             <input type="number" name="harga[]" id="harga" class="form-control harga">
+                                        </td>
+                                        <td>
+                                            <input type="number" name="diskon[]" id="diskon" class="form-control diskon">
                                         </td>
                                         <td>
                                             <input type="number" name="total_harga[]" id="total_harga" class="form-control total_harga">
@@ -76,7 +80,7 @@
                         </table>
                         </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <div class="card-header">
                                 <h4>Total <b class="total">0.00</b></h4>
                             </div>
@@ -177,6 +181,7 @@
             '<td> <input type="text" name="size[]" class="form-control size"></td>' +
             '<td> <input type="number" name="day[]" class="form-control day"></td>' +
             '<td> <input type="number" name="harga[]" class="form-control harga"></td>' +
+            '<td> <input type="number" name="diskon[]" class="form-control diskon"></td>' +
             '<td> <input type="number" name="total_harga[]" class="form-control total_harga"></td>' +
             '<td><a href="" class="btn btn-sm btn-danger delete rounded-circle"><i class="fa fa-times"></i></a></td>'; 
             $('.addMoreOrder').append(tr);
@@ -206,13 +211,14 @@
             tr.find('.size').val(size);
             var day = tr.find('.day').val() - 0;
             var harga = tr.find('.harga').val() - 0;
+            var diskon = tr.find('.diskon').val() - 0;
             var size = tr.find('.size').val() - 0;
-            var total_harga = (day * harga);
+            var total_harga = (day * harga) - (diskon);
             tr.find('.total_harga').val(total_harga);
             TotalHarga();
         });
         
-        $('.addMoreOrder').delegate('.day', 'keyup', function(){
+        $('.addMoreOrder').delegate('.day , .diskon', 'keyup', function(){
             var tr = $(this).parent().parent();
             var harga = tr.find('.id_kamar option:selected').attr('data-harga');
             tr.find('.harga').val(harga);
@@ -220,8 +226,9 @@
             tr.find('.size').val(size);
             var day = tr.find('.day').val() - 0;
             var harga = tr.find('.harga').val() - 0;
+            var diskon = tr.find('.diskon').val() - 0;
             var size = tr.find('.size').val() - 0;
-            var total_harga = (day * harga);
+            var total_harga = (day * harga) - (diskon);
             tr.find('.total_harga').val(total_harga);
             TotalHarga();
         });

@@ -115,6 +115,7 @@
                                         <th scope="col">Ukuran Kasur</th>
                                         <th scope="col">Hari</th>
                                         <th scope="col">Harga</th>
+                                        <th scope="col">Diskon</th>
                                         <th scope="col">Total</th>
                                         </tr>
                                     </thead>
@@ -125,6 +126,7 @@
                                         <td>{{ $detail-> kamar -> bed_size}}</td>
                                         <td>{{ $detail-> day}}</td>
                                         <td>{{ number_format($detail->harga)}}</td>
+                                        <td>{{ number_format($detail->diskon)}}</td>
                                         <td>{{  number_format($detail->total_harga)}}</td>
                                         </tr>
                                     @endforeach

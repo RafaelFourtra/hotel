@@ -59,6 +59,7 @@ class PenjualanController extends Controller
             $booking_detail = new BookingDetail;      
             $booking_detail->id_kamar = $request->id_kamar[$id_kamar];
             $booking_detail->day = $request->day[ $id_kamar];
+            $booking_detail->diskon = $request->diskon[ $id_kamar];
             $booking_detail->harga = $request->harga[ $id_kamar];
             $booking_detail->total_harga = $request->total_harga[ $id_kamar];
             $transaksi_jumlah +=$request->total_harga[ $id_kamar];
